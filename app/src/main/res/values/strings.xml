@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">News Checker</string>
+
+    <string name="label_popular_news">Popular news</string>
+    <string name="label_todays_paper">Today\'s Paper</string>
+    <string name="label_news_details">News details</string>
+
+    <string name="label_news_icon_content_description">News icon</string>
+    <string name="label_news_details_icon_content_description">News details icon</string>
+
+    <string name="label_progress_indicator_tag">News progress indicator</string>
+    <string name="label_lazy_column_tag">News lazy column</string>
+    <string name="label_web_view_tag">News web view</string>
+</resources>
