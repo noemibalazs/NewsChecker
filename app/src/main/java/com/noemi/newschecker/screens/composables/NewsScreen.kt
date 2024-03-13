@@ -38,7 +38,7 @@ fun NewsScreen(loginViewModel: NewsViewModel) {
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.inversePrimary)
     ) {
-        RenderContent(newsState = newsState.value, currentDate = currentDate.value)
+        NewsScreenRoot(newsState = newsState.value, currentDate = currentDate.value)
 
         LaunchedEffect(key1 = errorState.value) {
             if (errorState.value.isShow && errorState.value.message.isNotBlank()) {
@@ -49,7 +49,7 @@ fun NewsScreen(loginViewModel: NewsViewModel) {
 }
 
 @Composable
-private fun RenderContent(newsState: NewsViewModel.NewsState, currentDate: String) {
+private fun NewsScreenRoot(newsState: NewsViewModel.NewsState, currentDate: String) {
 
     ConstraintLayout(
         modifier = Modifier
@@ -81,7 +81,10 @@ private fun RenderContent(newsState: NewsViewModel.NewsState, currentDate: Strin
                 item {
                     NewsHeader(date = currentDate)
                 }
-                items(newsState.news) { item ->
+                items(
+                    items = newsState.news,
+                    key = { it.id }
+                ) { item ->
                     NewsItemRow(news = item)
                 }
             }
