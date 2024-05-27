@@ -4,5 +4,5 @@ import com.noemi.newschecker.model.*
 
 interface NewYorkTimesRepository {
 
-    suspend fun getMostPopularNews():NetworkResult<NewsResults>
+    suspend fun getMostPopularNews(key: String): NetworkResult<NewsResults>
 }

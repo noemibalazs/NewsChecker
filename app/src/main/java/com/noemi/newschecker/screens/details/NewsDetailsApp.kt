@@ -1,4 +1,4 @@
-package com.noemi.newschecker.screens.composables
+package com.noemi.newschecker.screens.details
 
 import android.graphics.Bitmap
 import android.webkit.WebResourceError
@@ -20,16 +20,16 @@ import com.noemi.newschecker.R
 import com.noemi.newschecker.utils.NewsAppBar
 
 @Composable
-fun NewsDetailsApp(url: String) {
+fun NewsDetailsApp(url: String, modifier: Modifier = Modifier) {
 
     var isLoading by remember { mutableStateOf(false) }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = modifier.fillMaxSize()) {
 
         NewsAppBar(title = stringResource(id = R.string.label_news_details), contentDescription = stringResource(id = R.string.label_news_details_icon_content_description))
 
         Column(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
@@ -38,7 +38,7 @@ fun NewsDetailsApp(url: String) {
                 CircularProgressIndicator(
                     color = MaterialTheme.colorScheme.onPrimaryContainer,
                     strokeWidth = 3.dp,
-                    modifier = Modifier.testTag(stringResource(id = R.string.label_progress_indicator_tag))
+                    modifier = modifier.testTag(stringResource(id = R.string.label_progress_indicator_tag))
                 )
             }
 
@@ -72,7 +72,7 @@ fun NewsDetailsApp(url: String) {
                         loadUrl(url)
                     }
                 },
-                modifier = Modifier.testTag(stringResource(id = R.string.label_web_view_tag))
+                modifier = modifier.testTag(stringResource(id = R.string.label_web_view_tag))
             )
         }
     }

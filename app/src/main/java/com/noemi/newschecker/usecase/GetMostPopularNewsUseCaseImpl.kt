@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class GetMostPopularNewsUseCaseImpl @Inject constructor(private val newYorkRepository: NewYorkTimesRepository) : GetMostPopularNewsUseCase {
 
-    override suspend fun execute(): Result<List<News>> = when (val news = newYorkRepository.getMostPopularNews()) {
+    override suspend fun execute(key: String): Result<List<News>> = when (val news = newYorkRepository.getMostPopularNews(key)) {
         is NetworkResult.Success -> Result.success(news.data.results)
         is NetworkResult.Error -> Result.failure(Throwable(news.message))
         is NetworkResult.Failure -> Result.failure(news.error)

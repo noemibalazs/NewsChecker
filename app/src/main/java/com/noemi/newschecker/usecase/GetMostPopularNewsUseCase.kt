@@ -4,5 +4,5 @@ import com.noemi.newschecker.model.News
 
 interface GetMostPopularNewsUseCase {
 
-    suspend fun execute():Result<List<News>>
+    suspend fun execute(key: String): Result<List<News>>
 }

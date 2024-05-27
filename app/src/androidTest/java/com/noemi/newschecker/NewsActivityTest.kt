@@ -3,9 +3,8 @@ package com.noemi.newschecker
 import androidx.activity.compose.setContent
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.noemi.newschecker.screens.composables.NewsApp
-import com.noemi.newschecker.screens.screens.NewsActivity
+import com.noemi.newschecker.screens.news.NewsActivity
+import com.noemi.newschecker.screens.news.NewsApp
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -18,7 +17,7 @@ class NewsActivityTest {
     @Before
     fun setupNewsApp() {
         composeRule.activity.setContent {
-            NewsApp(loginViewModel = hiltViewModel())
+            NewsApp()
         }
     }
 

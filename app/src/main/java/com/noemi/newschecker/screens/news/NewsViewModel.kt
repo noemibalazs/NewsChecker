@@ -1,8 +1,10 @@
-package com.noemi.newschecker.screens.viewmodel
+package com.noemi.newschecker.screens.news
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import androidx.lifecycle.viewModelScope
+import com.noemi.newschecker.R
 import com.noemi.newschecker.model.News
 import com.noemi.newschecker.usecase.GetMostPopularNewsUseCase
 import kotlinx.coroutines.flow.*
@@ -11,11 +13,11 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
-
 @HiltViewModel
 class NewsViewModel @Inject constructor(
-    private val getMostPopularNewsUseCase: GetMostPopularNewsUseCase
-) : ViewModel() {
+    private val getMostPopularNewsUseCase: GetMostPopularNewsUseCase,
+    private val app: Application
+) : AndroidViewModel(app) {
 
     private var _currentDateState = MutableStateFlow(String())
     val currentDateState = _currentDateState.asStateFlow()
@@ -39,7 +41,9 @@ class NewsViewModel @Inject constructor(
                 it.copy(isLoading = true)
             }
 
-            getMostPopularNewsUseCase.execute()
+            val key = app.applicationContext.resources.getString(R.string.new_york_times_key)
+
+            getMostPopularNewsUseCase.execute(key)
                 .onFailure {
                     _newsState.update { newsState ->
                         newsState.copy(isLoading = false)

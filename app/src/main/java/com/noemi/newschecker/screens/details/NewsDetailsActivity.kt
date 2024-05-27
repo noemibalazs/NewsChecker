@@ -1,4 +1,4 @@
-package com.noemi.newschecker.screens.screens
+package com.noemi.newschecker.screens.details
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,7 +9,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.noemi.newschecker.screens.composables.NewsDetailsApp
 import com.noemi.newschecker.ui.theme.NewsTheme
 
 class NewsDetailsActivity : ComponentActivity() {
