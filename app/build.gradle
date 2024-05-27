@@ -24,7 +24,7 @@ android {
         }
 
         Properties properties = new Properties()
-        File file = project.rootProject.file("key.properties")
+        File file = project.rootProject.file("local.properties")
         if (file.exists()) properties.load(file.newDataInputStream())
 
         resValue "string", "new_york_times_key", properties.getProperty("new.york.times.key")
